@@ -25,19 +25,19 @@ steps:
       goals: 'package'
 
   - task: Docker@2
-      displayName: dockerBuild
-      inputs:
-        repository: $(imageRepository)
-        command: build
-        Dockerfile: Dockerfile
-        tags: |
-          $(tag)
+    displayName: dockerBuild
+    inputs:
+      repository: $(imageRepository)
+      command: build
+      Dockerfile: Dockerfile
+      tags: |
+        $(tag)
 
   - task: Docker@2
-      displayName: dockerPush
-      inputs:
-        command: push
-        containerRegistry: $(containerRegistryServiceConnection)
-        repository: $(imageRepository)
-        tags: |
-          $(tag)
+    displayName: dockerPush
+    inputs:
+      command: push
+      containerRegistry: $(containerRegistryServiceConnection)
+      repository: $(imageRepository)
+      tags: |
+        $(tag)
